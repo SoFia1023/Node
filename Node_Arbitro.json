@@ -1,0 +1,199 @@
+{
+  "info": {
+    "_postman_id": "99375fb6-a0d4-4d94-a720-47e7aa694eb8",
+    "name": "Node Árbitro ",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login (árbitro)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"correo\": \"arbitro@mail.com\",\n  \"contrasena\": \"Secreta123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Árbitro",
+      "item": [
+        {
+          "name": "Perfil - GET",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/arbitro/perfil",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "arbitro", "perfil"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Perfil - PUT (foto + fechasDisponibles)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "foto", "type": "file", "src": "" },
+                { "key": "fechasDisponibles", "value": "2025-11-10", "type": "text" },
+                { "key": "fechasDisponibles", "value": "2025-11-17", "type": "text" },
+                { "key": "quitarFoto", "value": "false", "type": "text" },
+                { "key": "urlFoto", "value": "https://ejemplo.com/fotos/nino", "type": "text" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/arbitro/perfil",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "arbitro", "perfil"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Asignaciones - Listar",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/arbitro/asignaciones",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "arbitro", "asignaciones"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Asignaciones - Aceptar",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/arbitro/asignaciones/1/aceptar",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "arbitro", "asignaciones", "1", "aceptar"]
+            },
+            "description": "Reemplaza 1 por el id de la asignación."
+          },
+          "response": []
+        },
+        {
+          "name": "Asignaciones - Rechazar",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/arbitro/asignaciones/1/rechazar",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "arbitro", "asignaciones", "1", "rechazar"]
+            },
+            "description": "Reemplaza 1 por el id de la asignación."
+          },
+          "response": []
+        },
+        {
+          "name": "Liquidaciones - Listar",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/arbitro/liquidaciones",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "arbitro", "liquidaciones"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Liquidaciones - Descargar PDF",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" },
+              { "key": "Accept", "value": "application/pdf" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/arbitro/liquidaciones/1/pdf",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "arbitro", "liquidaciones", "1", "pdf"]
+            },
+            "description": "Reemplaza 1 por el id de la liquidación."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "News",
+      "item": [
+        {
+          "name": "GET News (real nba-api)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "X-API-KEY", "value": "{{apiKey}}", "type": "text" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/news",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "news"]
+            },
+            "description": "Proxy Node → Spring /api/news/nba-api (requiere X-API-KEY)"
+          },
+          "response": []
+        },
+        {
+          "name": "GET News (mock) [opcional]",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "X-API-KEY", "value": "{{apiKey}}", "type": "text" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/news/mock",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "news", "mock"]
+            },
+            "description": "Proxy Node → Spring /api/news/nba-mock (requiere X-API-KEY)"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:4000" },
+    { "key": "token", "value": "" },
+    { "key": "apiKey", "value": "" }
+  ]
+}
