@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/arbitros-api
+  IMAGE_NAME: sofia1023/arbitros-api
 
 jobs:
   build-and-push:
@@ -13,10 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: docker/setup-buildx-action@v3
+
+      # Login a Docker Hub: username fijo + token desde secret correcto
       - uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: sofia1023
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - id: meta
         uses: docker/metadata-action@v5
         with:
@@ -24,6 +27,7 @@ jobs:
           tags: |
             type=raw,value=latest
             type=sha
+
       - uses: docker/build-push-action@v6
         with:
           context: .
