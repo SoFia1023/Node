@@ -1,2 +1,7 @@
-# Ignorar dependencias
-node_modules/
+@"
+node_modules
+npm-debug.log
+.DS_Store
+.env
+.gitignore
+"@ | Out-File -Encoding utf8 ".gitignore"
