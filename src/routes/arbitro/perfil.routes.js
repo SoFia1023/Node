@@ -1,4 +1,3 @@
-// MODFICADO ULTIMOOOOOOOOOOOOOOO
 
 import { Router } from "express";
 import multer from "multer";
@@ -116,14 +115,14 @@ router.get("/perfil", async (req, res) => {
  */
 router.put("/perfil", upload.single("foto"), async (req, res) => {
   try {
-    // Subida de imagen si existe archivo
+    
     if (req.file) {
       const nombre = `${Date.now()}_${req.file.originalname}`;
       const url = await subirArchivoCloudinary(req.file.buffer, nombre);
       req.body.urlFoto = url;
     }
 
-    // Normalización de fechas disponibles
+    
     let fechas = [];
     const val = req.body.fechasDisponibles;
     if (Array.isArray(val)) fechas = val;
@@ -131,7 +130,7 @@ router.put("/perfil", upload.single("foto"), async (req, res) => {
       fechas = val.includes(",") ? val.split(",").map(s => s.trim()) : [val.trim()];
     }
 
-    // Validar formato de fechas
+   
     const isoDate = /^\d{4}-\d{2}-\d{2}$/;
     for (const f of fechas) {
       if (!isoDate.test(f)) {
@@ -139,7 +138,6 @@ router.put("/perfil", upload.single("foto"), async (req, res) => {
       }
     }
 
-    // Preparar datos para enviar al backend de Spring
     const form = new FormData();
     if (req.body.quitarFoto !== undefined) form.append("quitarFoto", String(req.body.quitarFoto));
     if (req.body.urlFoto) form.append("urlFoto", String(req.body.urlFoto));

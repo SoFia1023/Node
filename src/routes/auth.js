@@ -1,6 +1,3 @@
-// MODFICADO ULTIMOOOOOOOOOOOOOOO
-
-// src/routes/auth.js
 import { Router } from "express";
 import { spring } from "../services/springClient.js";
 

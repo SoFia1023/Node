@@ -1,5 +1,3 @@
-// MODFICADO ULTIMOOOOOOOOOOOOOOOO
-
 import { Router } from "express";
 import { spring, authHeaders } from "../../services/springClient.js";
 import { requireAuth } from "../../middlewares/requireAuth.js";

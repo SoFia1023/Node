@@ -1,12 +1,9 @@
-// MODFICADO ULTIMOOOOOOOOOOOOOOO
-
-// src/routes/news.js
 import { Router } from "express";
 import { spring } from "../services/springClient.js";
 
 const router = Router();
 
-// Apunta a la API real en Spring; puedes cambiarla con NEWS_PATH en .env
+
 const NEWS_TARGET = process.env.NEWS_PATH || "/api/news/nba-api";
 
 /**
@@ -22,7 +19,7 @@ const NEWS_TARGET = process.env.NEWS_PATH || "/api/news/nba-api";
  *   get:
  *     description: Devuelve las noticias más recientes, obtenidas a través del servicio Spring configurado en NEWS_PATH.
  *     tags: [Noticias]
- *     security: []   # 👈 Desactiva el candado para este endpoint
+ *     security: []   
  *     parameters:
  *       - in: header
  *         name: X-API-KEY
@@ -79,7 +76,7 @@ router.get("/", async (req, res) => {
 
  *     description: Devuelve un conjunto de noticias ficticias desde el backend Spring.
  *     tags: [Noticias]
- *     security: []   # 👈 Desactiva el candado para este endpoint
+ *     security: []   
  *     parameters:
  *       - in: header
  *         name: X-API-KEY

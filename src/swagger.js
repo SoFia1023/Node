@@ -1,5 +1,3 @@
-// MODIFICADO ULTIMOOOOOOOOOOOOOO
-
 import swaggerJSDoc from "swagger-jsdoc";
 
 const swaggerDefinition = {
@@ -11,7 +9,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: "http://localhost:4000", // 🔹 debe coincidir con tu server.js
+      url: "http://localhost:4000",
       description: "Servidor local de desarrollo",
     },
   ],
@@ -40,7 +38,7 @@ const swaggerDefinition = {
 
 const options = {
   swaggerDefinition,
-  apis: ["./src/routes/**/*.js"], // 🔹 busca los bloques @swagger
+  apis: ["./src/routes/**/*.js"], 
 };
 
 const swaggerSpec = swaggerJSDoc(options);

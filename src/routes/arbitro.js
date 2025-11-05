@@ -1,6 +1,4 @@
-// MODFICADO ULTIMOOOOOOOOOOOOOOO
 
-// src/routes/arbitro.js
 import { Router } from "express";
 import perfilRoutes from "./arbitro/perfil.routes.js";
 import asignacionesRoutes from "./arbitro/asignaciones.routes.js";
